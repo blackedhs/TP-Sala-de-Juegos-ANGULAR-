@@ -9,7 +9,7 @@ export class InputJugadoresComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

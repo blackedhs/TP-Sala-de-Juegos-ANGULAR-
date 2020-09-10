@@ -9,7 +9,7 @@ export class AnagramaComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

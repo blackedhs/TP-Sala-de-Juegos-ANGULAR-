@@ -9,7 +9,7 @@ export class QuienSoyComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

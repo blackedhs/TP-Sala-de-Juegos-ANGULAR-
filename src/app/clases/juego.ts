@@ -17,10 +17,6 @@ export abstract class Juego {
             this.jugador = 'natalia natalia';
         }
     }
-
-
-
-
     public abstract verificar(): boolean;
 
     public retornarAyuda() {

@@ -1,0 +1,18 @@
+img {
+    width: 2em;
+}
+img:hover {
+    transform: scaleY(-1);
+    transition: .5s ease;
+}
+
+.MenuButton{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+section {
+    display: block;
+    margin: 8px;
+}

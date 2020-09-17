@@ -11,21 +11,29 @@ import { AuthService } from 'src/app/servicios/auth.service';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-  public persona: User;
   public user$: Observable<User> = this.authSvc.afAuth.user;
   private mediaMarcher: MediaQueryList = matchMedia('(max-width:720px)');
   constructor(private authSvc: AuthService, private router: Router) { }
 
-  async ngOnInit() {
-    console.log(this.persona);
+  ngOnInit(): void {
+    this.isloged();
   }
-  async onLogout(){
+  async onLogout(): Promise<any> {
     await this.authSvc.logout();
-    this.router.navigate(['/principal']);
+    this.router.navigate(['/login']);
   }
 
-  pantallaSmall() {
+  pantallaSmall(): boolean {
     const data = this.mediaMarcher.matches;
     return data;
+  }
+
+  isloged(): void {
+    this.authSvc.afAuth.currentUser
+      .then(data => {
+        if (data == null) {
+          this.router.navigate(['/login']);
+        }
+      });
   }
 }

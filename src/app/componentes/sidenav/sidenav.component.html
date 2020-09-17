@@ -1,20 +1,19 @@
 <mat-sidenav-container class="app-sidenav-container">
     <mat-sidenav class="app-sidenav" #sidenav [opened]="!pantallaSmall()" [mode]="pantallaSmall() ? 'over' : 'side'">
         <mat-toolbar color="primary"> MENU </mat-toolbar>
-        <mat-nav-list>
+
+        <mat-nav-list *ngIf="user$ | async as user; else loged">
             <mat-list-item>
                 <a matLine href="principal">
                     <h2>Home</h2>
                 </a>
                 <mat-icon>home</mat-icon>
             </mat-list-item>
-        </mat-nav-list>
-        <mat-nav-list *ngIf="user$ | async as user; else loged">
-            <mat-list-item style="height: 150px;">
-                <img class="img rounded-circle" src="./../../../assets/imagenes/login-5.jpg">
+            <mat-list-item style="height: 150px">
+                <img class="img rounded-circle" src="./../../../assets/imagenes/login-5.jpg" />
             </mat-list-item>
             <mat-list-item>
-                <h3 matLine class="text-center">{{user.email}}</h3>
+                <h3 matLine class="text-center">{{ user.email }}</h3>
                 <a matLine>
                     <h2 (click)="onLogout()">Logout</h2>
                 </a>

@@ -21,6 +21,7 @@ const routes: Routes = [
   {
     path: '', component: SidenavComponent,
     children: [
+      { path: '', component: LoginComponent },
       { path: 'login', component: LoginComponent },
       { path: 'quiensoy', component: QuiensoyComponent },
       { path: 'registro', component: RegistroComponent },

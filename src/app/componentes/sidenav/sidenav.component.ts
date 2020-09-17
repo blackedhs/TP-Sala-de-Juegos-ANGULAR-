@@ -13,10 +13,9 @@ import { AuthService } from 'src/app/servicios/auth.service';
 export class SidenavComponent implements OnInit {
   public user$: Observable<User> = this.authSvc.afAuth.user;
   private mediaMarcher: MediaQueryList = matchMedia('(max-width:720px)');
-  constructor(private authSvc: AuthService, private router: Router) { }
+  constructor(private authSvc: AuthService, public router: Router) { }
 
   ngOnInit(): void {
-    this.isloged();
   }
   async onLogout(): Promise<any> {
     await this.authSvc.logout();
@@ -27,13 +26,5 @@ export class SidenavComponent implements OnInit {
     const data = this.mediaMarcher.matches;
     return data;
   }
-
-  isloged(): void {
-    this.authSvc.afAuth.currentUser
-      .then(data => {
-        if (data == null) {
-          this.router.navigate(['/login']);
-        }
-      });
-  }
 }
+

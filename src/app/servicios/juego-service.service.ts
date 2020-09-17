@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Juego } from '../clases/Juego';
-import { JuegoAdivina } from '../clases/juego-adivina';
+import { JuegoAdivina } from '../clases/juego-adivina.js';
 import { MiHttpService } from './mi-http.service';
 
 @Injectable()
@@ -12,7 +11,7 @@ export class JuegoServiceService {
     //    this.peticion = this.miHttp.httpGetO("https://restcountries.eu/rest/v2/all");
   }
 
-  public listar(): Array<Juego> {
+  public listar(): Array<JuegoAdivina> {
     this.miHttp.httpGetP('https://restcountries.eu/rest/v2/all')
       .then(data => {
         console.log(data);
@@ -30,7 +29,7 @@ export class JuegoServiceService {
         console.log('error: ', err);
       });
 
-    const miArray: Array<Juego> = new Array<Juego>();
+    const miArray: Array<JuegoAdivina> = new Array<JuegoAdivina>();
 
     miArray.push(new JuegoAdivina('Juego 1', false));
     miArray.push(new JuegoAdivina('Pepe', true));
@@ -41,16 +40,16 @@ export class JuegoServiceService {
     return miArray;
   }
 
-  public listarP(): Promise<Array<Juego>> {
+  public listarP(): Promise<Array<JuegoAdivina>> {
     this.peticion
       .subscribe(data => {
         console.log('En listarPromesa');
         console.log(data);
       }, err => {
         console.log(err);
-      })
-    const promesa: Promise<Array<Juego>> = new Promise((resolve, reject) => {
-      const miArray: Array<Juego> = new Array<Juego>();
+      });
+    const promesa: Promise<Array<JuegoAdivina>> = new Promise((resolve, reject) => {
+      const miArray: Array<JuegoAdivina> = new Array<JuegoAdivina>();
       miArray.push(new JuegoAdivina('JuegoPromesa 1', false, 'promesa'));
       miArray.push(new JuegoAdivina('PepePromesa', true));
       miArray.push(new JuegoAdivina('JuegoPromesa 3', false));

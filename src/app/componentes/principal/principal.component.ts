@@ -6,15 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-  public status: any = {
-    isFirstOpen: true,
-    isFirstDisabled: false
-  };
+
   constructor() { }
 
-  ngOnInit(): any {
+  ngOnInit(): void {
   }
-
-
 
 }

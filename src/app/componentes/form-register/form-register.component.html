@@ -1,0 +1,21 @@
+<span><h1 class="text-center">REGISTRO</h1> </span>
+<form class="example-form" [formGroup]='registerForm' (ngSubmit)='onSubmit()'>
+    <mat-form-field class="example-full-width">
+        <mat-label>Direccion de correo electronico</mat-label>
+        <input type='email' matInput placeholder="Email" class="noback" formControlName='email' />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput placeholder="6 caracteres minimo" formControlName='password' />
+    </mat-form-field>
+    <div class="example-button-row">
+        <button type="submit" mat-raised-button color="primary" class="btn btn-block">Registrar</button>
+    </div>
+    <div class="example-button-row">
+        <button mat-raised-button color="accent" class="btn btn-block" routerLink='/principal'>Cancelar</button>
+    </div>
+</form>
+<section class="section mt-1">
+    Ya tienes cuentas? <a routerLink="/login">Login</a>
+    <link>
+</section>

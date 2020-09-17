@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fandrade-labo4": {
+      "hosting": {
+        "Sala de juegos": [
+          "fandrade-labo4"
+        ]
+      }
+    }
+  }
+}

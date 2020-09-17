@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
-import { FirebaseService } from '../../servicios/firebase.service';
-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -15,33 +13,21 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  Salir(): void {
-    // this.firebaseService.logoutJugador();
-    // this.router.navigate(['/Login']);
-  }
-
-  Principal(): void {
-    this.router.navigate(['/Principal']);
-  }
-
-  Quien(): void {
-    this.router.navigate(['/QuienSoy']);
-  }
-
   Juego(tipo: string): void {
     switch (tipo) {
-      case 'Juegos':
-        this.router.navigate(['/Juegos']);
+      case 'Adivina':
+        this.router.navigate(['/Juegos/Adivina']);
         break;
-      case 'Listado':
-        this.router.navigate(['/Listado']);
+      case 'Agilidad':
+        this.router.navigate(['/Juegos/Agilidad']);
         break;
-      case 'Configuracion':
-        this.router.navigate(['/Configuracion']);
+      case 'AdivinaMasListado':
+        this.router.navigate(['/Juegos/AdivinaMasListado']);
         break;
-      case 'Jugadores':
-        this.router.navigate(['/Jugadores']);
+      case 'AgilidadaMasListado':
+        this.router.navigate(['/Juegos/AgilidadaMasListado']);
         break;
     }
   }
+
 }

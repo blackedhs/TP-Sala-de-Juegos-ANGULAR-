@@ -1,0 +1,12 @@
+.btn-hamburguesa {
+    display: flex;
+    min-width: 56px;
+}
+
+
+/* @media (max-width:720px) {
+    .btn-hamburguesa {
+        display: flex;
+        justify-content: center;
+    }
+} */

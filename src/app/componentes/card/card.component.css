@@ -1,0 +1,9 @@
+.example-card {
+    max-width: 400px;
+    max-width: 300px;
+}
+
+.example-header-image {
+    background-image: url('../../../assets/imagenes/quiensoy.jpg');
+    background-size: cover;
+}

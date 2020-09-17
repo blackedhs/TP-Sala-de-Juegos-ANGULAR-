@@ -1,0 +1,26 @@
+.example-form {
+    min-width: 150px;
+    max-width: 490px;
+    width: 100%;
+    background-color: none;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.example-button-row {
+    display: table;
+    width: 490px;
+    margin: 8px 8px 8px 0;
+    margin-right: 8px;
+}
+
+.section {
+    display: table;
+}
+
+.noback {
+    background: transparent !important;
+    color: white !important;
+}

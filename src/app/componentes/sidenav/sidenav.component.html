@@ -1,0 +1,59 @@
+<mat-sidenav-container class="app-sidenav-container">
+    <mat-sidenav class="app-sidenav" #sidenav [opened]="!pantallaSmall()" [mode]="pantallaSmall() ? 'over' : 'side'">
+        <mat-toolbar color="primary"> MENU </mat-toolbar>
+        <mat-nav-list>
+            <mat-list-item>
+                <a matLine href="principal">
+                    <h2>Home</h2>
+                </a>
+                <mat-icon>home</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="user$ | async as user; else loged">
+            <mat-list-item style="height: 150px;">
+                <img class="img rounded-circle" src="./../../../assets/imagenes/login-5.jpg">
+            </mat-list-item>
+            <mat-list-item>
+                <h3 matLine class="text-center">{{user.email}}</h3>
+                <a matLine>
+                    <h2 (click)="onLogout()">Logout</h2>
+                </a>
+                <mat-icon>cancel_presentation</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+        <ng-template #loged>
+            <mat-nav-list>
+                <mat-list-item>
+                    <a matLine href="login">
+                        <h2>Login</h2>
+                    </a>
+                    <mat-icon>login</mat-icon>
+                </mat-list-item>
+                <mat-list-item>
+                    <a matLine href="registro">
+                        <h2>Registrarse</h2>
+                    </a>
+                    <mat-icon>how_to_reg</mat-icon>
+                </mat-list-item>
+            </mat-nav-list>
+        </ng-template>
+        <mat-nav-list>
+            <mat-list-item>
+                <a matLine href="quiensoy">
+                    <h2>Quien Soy</h2>
+                </a>
+                <mat-icon>fingerprint</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <a matLine href="https://github.com/blackedhs/fandrade-labo4">
+                    <h2>Github</h2>
+                </a>
+                <img src="../../../assets/imagenes/PNG_git/GitHub-Mark-Light-32px.png" alt="" width="25px" height="25px" />
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <div class="app-sidenav-content">
+        <app-toolbar (disparador)="sidenav.toggle()"></app-toolbar>
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>

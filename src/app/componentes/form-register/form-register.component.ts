@@ -10,20 +10,17 @@ import { AuthService } from 'src/app/servicios/auth.service';
 })
 export class FormRegisterComponent implements OnInit {
   public registerForm = new FormGroup({
-    email: new FormControl (''),
-    password: new FormControl ('')
+    email: new FormControl(''),
+    password: new FormControl('')
   });
   constructor(private authSvc: AuthService, private routes: Router) { }
 
   ngOnInit(): void {
   }
-  async onSubmit(){
-    const {email, password} = this.registerForm.value;
-    try {
-      await this.authSvc.registrar(email, password);
-      this.routes.navigate(['/principal']);
-    } catch (error) {
-      alert(error);
-    }
+  onSubmit(): void {
+    const { email, password } = this.registerForm.value;
+    this.authSvc.registrar(email, password)
+      .then(() => this.routes.navigate(['/principal']))
+      .catch(() => alert('Error en el registro'));
   }
 }

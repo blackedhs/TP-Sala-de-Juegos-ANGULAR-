@@ -19,14 +19,17 @@ export class FormLoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  async onSubmit() {
+  onSubmit(): void {
     const { email, password } = this.loginForm.value;
-    try {
-      await this.authSvc.login(email, password);
-      this.route.navigate(['/principal']);
-    } catch (error) {
-      alert(error);
-    }
+    this.authSvc.login(email, password)
+      .then(() => this.route.navigate(['/principal']))
+      .catch(() => alert('Usuario o Contraseña incorrecta')
+      );
   }
-
+  cargaUsuario(): void {
+    this.loginForm.setValue({
+      email: 'prueba@prueba.com',
+      password: '123456'
+    });
+  }
 }

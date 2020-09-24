@@ -6,29 +6,14 @@ export class AuthService {
 
   constructor(public afAuth: AngularFireAuth) { }
 
-  async login(email: string, pass: string): Promise<auth.UserCredential> {
-    try {
-      const result = await this.afAuth.signInWithEmailAndPassword(email, pass);
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
+  login(email: string, pass: string): Promise<auth.UserCredential> {
+    return this.afAuth.signInWithEmailAndPassword(email, pass);
   }
-  async registrar(email: string, pass: string): Promise<firebase.auth.UserCredential> {
-    try {
-      const result = await this.afAuth.createUserWithEmailAndPassword(email, pass);
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
+  registrar(email: string, pass: string): Promise<firebase.auth.UserCredential> {
+   return this.afAuth.createUserWithEmailAndPassword(email, pass);
   }
-  async logout(): Promise<any> {
-    try {
-      const result = await this.afAuth.signOut();
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
+  logout(): Promise<any> {
+    return this.afAuth.signOut();
   }
 }
 

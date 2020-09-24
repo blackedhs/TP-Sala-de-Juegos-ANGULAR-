@@ -1,45 +1,71 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!--app-menu></app-menu-->
 <!-- index.html -->
-<form name="juego">
-    <ul>
-        <li>
-            Primer número:
-            <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width: 50%" readonly />
-        </li>
-        <li>
-            Operador:
-            <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width: 50%" readonly />
-        </li>
-        <li>
-            Segundo número:
-            <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width: 50%" readonly />
-        </li>
-        <li>
-            Respuesta:
-            <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width: 50%" />
-        </li>
-        <li>
-            <h2 [hidden]="ocultarVerificar">
-                <button (click)="verificar()" class="btn btn-success btn-lg">
-          Verificar {{ Tiempo }}
-        </button>
-            </h2>
-        </li>
-        <li>
-            <h2 [hidden]="!ocultarVerificar">
-                <button (click)="NuevoJuego()" class="btn btn-info btn-lg">
-          Nuevo
-        </button>
-            </h2>
-        </li>
-        <li>
-            <h2>
-                <p><i class="fa fa-spinner fa-spin"></i>Esperando numero...</p>
-            </h2>
+<div class="container mx-2 my-5">
+    <form name="juego">
+        <div class="row my-2">
+            <div class="col-3">
+                <div class="label-control">
+                    <h1>Primer número:</h1>
+                </div>
+            </div>
+            <div class="col-9">
+                <input [(ngModel)]="nuevoJuego.numero1" name="numero1" type="number" class="form-control" style="width: 50%" readonly />
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-3">
+                <label for="" class="label-control"><h1> Operador: </h1></label>
+            </div>
+            <div class="col-9">
+                <img [src]="operador" alt="" class="imagenes rounded-circle" />
+            </div>
+        </div>
 
-            <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-            <h3 [hidden]="nuevoJuego.gano">usted aún no gano</h3>
-        </li>
-    </ul>
-</form>
+        <div class="row my-2">
+            <div class="col-3">
+                <label for=""> <h1>Segundo número:</h1> </label>
+            </div>
+            <div class="col-9">
+                <input [(ngModel)]="nuevoJuego.numero2" placeholder="ingrese numero" name="numero2" type="number" class="form-control" style="width: 50%" readonly />
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-3">
+                <label for="" class="label-control"> <h1>Respuesta: </h1></label>
+            </div>
+            <div class="col-9">
+                <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="number" class="form-control" style="width: 50%" />
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-6">
+                <h2 [hidden]="!ocultarVerificar">
+                    <button (click)="NuevoJuego()" class="btn btn-info btn-lg">
+            Nuevo
+          </button>
+                </h2>
+                <h2 [hidden]="ocultarVerificar">
+                    <p><i class="fa fa-spinner fa-spin"></i>Esperando numero...</p>
+                </h2>
+            </div>
+            <div class="col-6">
+                <h2 [hidden]="ocultarVerificar">
+                    <button (click)="verificar()" class="btn btn-success btn-lg">
+            Verificar {{ Tiempo }}
+          </button>
+                </h2>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-12">
+            <div [hidden]="!nuevoJuego.gano" class="p-3 mb-2 bg-success text-white text-center">
+                <h1> USTED ADIVINO EL NUMERO</h1>
+            </div>
+            <div [hidden]="nuevoJuego.gano" class="p-3 mb-2 bg-danger text-white text-center">
+                <h1>USTED AUN NO GANO</h1>
+            </div>
+        </div>
+    </div>
+</div>

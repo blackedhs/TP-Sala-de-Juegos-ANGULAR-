@@ -1,1 +1,51 @@
-<p>ppt works!</p>
+<div class="p-2 mb-2 bg-primary text-white text-center my-1">
+    <h1>PIEDRA PAPEL Y TIJERAS</h1>
+</div>
+<div class="p-3 mb-2">
+    <h2>Seleccione una accion</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h2>PIEDRA</h2>
+            <img src="../../../assets/imagenes/PPT/piedra.jpg" alt="" class="imagen rounded-circle" (click)="verificar('piedra')" />
+        </div>
+        <div class="col-4">
+            <h2>PAPEL</h2>
+            <img (click)="verificar('papel')" src="../../../assets/imagenes/PPT/papel.jpg" alt="" class="imagen rounded-circle" />
+        </div>
+        <div class="col-4">
+            <h2>TIJERAS</h2>
+            <img (click)="verificar('tijeras')" src="../../../assets/imagenes/PPT/tijeras.png" alt="" class="imagen rounded-circle" />
+        </div>
+    </div>
+    <mat-divider> </mat-divider>
+    <div [hidden]="!showScore">
+        <div class="row p-1 mb-2 bg-dark text-white text-center my-1">
+            <div class="col-5 text-center">
+                <h2>TU</h2>
+            </div>
+            <div class="col-2 text-center">
+                <h2>VS</h2>
+            </div>
+            <div class="col-5 text-center">
+                <h2>CPU</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <img [src]="tu" alt="" class="imagen rounded-circle mx-auto d-block" />
+            </div>
+            <div class="col-2 text-center my-auto">
+                <h1>{{ scoreTu }} - {{ scoreCpu }}</h1>
+            </div>
+            <div class="col-5">
+                <img [src]="cpu" alt="" class="imagen rounded-circle mx-auto d-block" />
+            </div>
+        </div>
+        <div class="row p-1 mb-2 bg-info text-white text-center my-1">
+            <h1>{{resultado}}</h1>
+        </div>
+
+    </div>
+</div>

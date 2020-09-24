@@ -3,6 +3,8 @@ import { Juego } from './juego';
 export class JuegoAgilidad extends Juego {
     numeroSecreto = 0;
     numeroIngresado = 0;
+    numero1 = 0;
+    numero2 = 0;
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
         super('Adivina el número', gano, jugador);
     }

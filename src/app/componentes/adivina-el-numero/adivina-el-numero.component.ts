@@ -55,8 +55,8 @@ export class AdivinaElNumeroComponent implements OnInit {
           this.mensaje = 'Ya le erraste ' + this.contador + ' veces';
           break;
       }
+      this.mensaje = this.mensaje + '' + this.nuevoJuego.retornarAyuda();
     }
-    console.log('numero Secreto:', this.nuevoJuego.gano);
   }
   ngOnInit(): void {
   }

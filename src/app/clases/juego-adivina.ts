@@ -7,14 +7,10 @@ export class JuegoAdivina extends Juego {
     super('Adivina el número', gano, jugador);
   }
   public verificar(): boolean {
-    if (this.numeroIngresado === this.numeroSecreto) {
+    if (this.numeroIngresado == this.numeroSecreto) {
       this.gano = true;
     }
-    if (this.gano) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.gano;
   }
   public generarnumero(): void {
     this.numeroSecreto = Math.floor((Math.random() * 100) + 1);

@@ -7,7 +7,7 @@ export class JuegoAdivina extends Juego {
     super('Adivina el número', gano, jugador);
   }
   public verificar(): boolean {
-    if (this.numeroIngresado == this.numeroSecreto) {
+    if (this.numeroIngresado === this.numeroSecreto) {
       this.gano = true;
     }
     return this.gano;

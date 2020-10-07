@@ -6,7 +6,7 @@ export class JuegoAgilidad extends Juego {
     numero1 = 0;
     numero2 = 0;
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super('Adivina el número', gano, jugador);
+        super('Velocidad Aritmetica', gano, jugador);
     }
     public verificar(): boolean {
         if (this.numeroIngresado === this.numeroSecreto) {

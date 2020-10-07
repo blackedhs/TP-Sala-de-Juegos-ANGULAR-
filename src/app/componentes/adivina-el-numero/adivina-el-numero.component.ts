@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FiredbService } from 'src/app/servicios/firedb.service';
 import { JuegoAdivina } from '../../clases/juego-adivina';
+import { SidenavComponent } from '../sidenav/sidenav.component';
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -9,28 +11,33 @@ import { JuegoAdivina } from '../../clases/juego-adivina';
 export class AdivinaElNumeroComponent implements OnInit {
 
   nuevoJuego: JuegoAdivina;
-  mensaje: string;
+  mensaje: string = 'SUERTE';
   contador: number;
   ocultarVerificar: boolean;
 
 
-  constructor() {
+  constructor(public db: FiredbService, public side: SidenavComponent) {
     this.nuevoJuego = new JuegoAdivina();
-    console.log('numero Secreto:', this.nuevoJuego.numeroSecreto);
     this.ocultarVerificar = true;
   }
   generarnumero(): void {
     this.nuevoJuego.generarnumero();
+    console.log('numero Secreto: ', this.nuevoJuego.numeroSecreto);
     this.contador = 0;
     this.ocultarVerificar = false;
+    this.mensaje = 'AUN NO ADIVIDINO :D '
   }
 
   verificar(): void {
     this.contador++;
-    console.log('numero Secreto:', this.nuevoJuego.gano);
     if (this.nuevoJuego.verificar()) {
       this.nuevoJuego.numeroSecreto = 0;
       this.ocultarVerificar = true;
+      this.db.setdb({
+        juego: 'Adivina el numero',
+        jugador: this.side.usuario.email,
+        resultado: true
+      });
     } else {
       switch (this.contador) {
         case 1:
@@ -45,20 +52,22 @@ export class AdivinaElNumeroComponent implements OnInit {
         case 4:
           this.mensaje = 'No era el  ' + this.nuevoJuego.numeroIngresado;
           break;
-        case 5:
-          this.mensaje = ' intentos y nada.';
-          break;
-        case 6:
-          this.mensaje = 'Afortunado en el amor';
-          break;
         default:
-          this.mensaje = 'Ya le erraste ' + this.contador + ' veces';
+          this.mensaje = 'Ya le erraste ' + this.contador + ' veces estas fuera ';
+          this.nuevoJuego.numeroSecreto = 0;
+          this.ocultarVerificar = true;
+          this.db.setdb({
+            juego: 'Adivina el numero',
+            jugador: this.side.usuario.email,
+            resultado: false
+          });
           break;
       }
-      this.mensaje = this.mensaje + '' + this.nuevoJuego.retornarAyuda();
+      this.mensaje = this.mensaje + '  ------------>>> ' + this.nuevoJuego.retornarAyuda();
     }
   }
   ngOnInit(): void {
+    this.db.getdb('juegos');
   }
 
 }

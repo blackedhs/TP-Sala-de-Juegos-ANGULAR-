@@ -1,5 +1,6 @@
 // modules
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +16,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
 import { JuegoServiceService } from './servicios/juego-service.service';
 import { MiHttpService } from './servicios/mi-http.service';
 import { PaisesService } from './servicios/paises.service';
+import { FiredbService } from 'src/app/servicios/firedb.service';
 // components
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './componentes/sidenav/sidenav.component';
@@ -86,14 +88,16 @@ import { MemotestComponent } from './componentes/memotest/memotest.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     ArchivosJugadoresService,
     AuthService,
     JuegoServiceService,
     MiHttpService,
-    PaisesService
+    PaisesService,
+    FiredbService
   ],
   bootstrap: [AppComponent]
 })

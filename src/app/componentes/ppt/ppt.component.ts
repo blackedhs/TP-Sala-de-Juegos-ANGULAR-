@@ -1,4 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { FiredbService } from 'src/app/servicios/firedb.service';
+import { SidenavComponent } from '../sidenav/sidenav.component';
 
 @Component({
   selector: 'app-ppt',
@@ -12,9 +15,10 @@ export class PptComponent implements OnInit {
   resultado: string;
   tu = '../../../assets/imagenes/PPT/tijeras.png';
   cpu = '../../../assets/imagenes/PPT/tijeras.png';
-  constructor() { }
+  constructor(public db: FiredbService, public side: SidenavComponent) { }
 
   ngOnInit(): void {
+    this.db.getdb('juegos');
   }
   verificar(eleccion: string): void {
     this.showScore = true;
@@ -60,11 +64,31 @@ export class PptComponent implements OnInit {
         }
         break;
     }
-    if (this.resultado === 'GANASTE!!!'){
+    if (this.resultado === 'GANASTE!!!') {
       this.scoreTu++;
-    }else if (this.resultado === 'PERDISTE!!!!'){
+    } else if (this.resultado === 'PERDISTE!!!!') {
       this.scoreCpu++;
     }
+    if (this.scoreTu == 3) {
+      this.resultado = ' ERES EL GANADOR DE LA RONDA';
+      this.scoreCpu = 0;
+      this.scoreTu = 0;
+      this.db.setdb({
+        juego: 'Piedra Papel o Tijeras',
+        jugador: this.side.usuario.email,
+        resultado: true
+      });
+    } else if (this.scoreCpu == 3) {
+      this.resultado = ' PERDISTE LA RONDA';
+      this.scoreCpu = 0;
+      this.scoreTu = 0;
+      this.db.setdb({
+        juego: 'Piedra Papel o Tijeras',
+        jugador: this.side.usuario.email,
+        resultado: false
+      });
+    }
+
   }
   numeroAleatorio(): number {
     return Math.floor((Math.random() * 3) + 1);

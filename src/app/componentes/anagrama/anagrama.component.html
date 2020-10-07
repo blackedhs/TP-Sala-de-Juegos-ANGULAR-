@@ -1,1 +1,41 @@
-<p>anagrama works!</p>
+<div class="container">
+    <div class="p-3 bg-secondary text-white text-center">
+        <h1>ANAGRAMA</h1>
+    </div>
+    <div class="row my-2">
+        <div class="col-md-12 text-center">
+            <h1>-------- ADIVINA QUE CLUB DE FUTBOL ES ---------</h1>
+        </div>
+    </div>
+    <div class="row" [hidden]="empezo">
+        <div class="col-12">
+            <button class="btn btn-success btn-block" (click)="onEmpezar()">EMPEZAR</button>
+        </div>
+    </div>
+    <div class="row" [hidden]="!empezo">
+        <div class="btn-group mx-auto" *ngFor='let pal of palabra'>
+            <button class="btn btn-secondary mr-2" disabled>{{pal}}</button>
+        </div>
+    </div>
+    <div class="row my-5" [hidden]= "!empezo">
+        <div class="col-md-6">
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="" class="sr-only">Respuesta</label>
+                    <input type="text" class="form-control" [(ngModel)]="respuesta">
+                </div>
+                <button class="btn btn-primary mb-2 btn-block" (click)="onVerificar()">Responder</button>
+        </div>
+        <div class="col-md-6 ">
+                <div class="row">
+                    <div class="col-12 ">
+                        <button class="btn btn-success btn-block" (click)='onEmpezar()'>Volver a intentar</button>
+                    </div>
+                    <div class="col-12 ">
+                        <button class="btn btn-secondary btn-block" disabled>TIEMPO: {{tiempo}}</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="p-3 mb-2 bg-success text-white" [hidden]="acerto != 1">Correcto!!!!!!!!!</div>
+    <div class="p-3 mb-2 bg-danger text-white" [hidden]="acerto != 2">Incorrecto!!!!!!!</div>
+</div>

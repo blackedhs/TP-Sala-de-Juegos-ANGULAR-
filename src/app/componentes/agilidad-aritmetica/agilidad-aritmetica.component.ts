@@ -1,6 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { JuegoAgilidad } from '../../clases/juego-agilidad';
 import { Subscription } from 'rxjs';
+import { Jugador } from 'src/app/clases/jugador';
+import { FiredbService } from 'src/app/servicios/firedb.service';
+import { ArchivosJugadoresService } from 'src/app/servicios/archivos-jugadores.service';
+import { SidenavComponent } from '../sidenav/sidenav.component';
+import { Juego } from 'src/app/clases/juego';
 
 @Component({
   selector: 'app-agilidad-aritmetica',
@@ -8,8 +13,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./agilidad-aritmetica.component.css']
 })
 export class AgilidadAritmeticaComponent implements OnInit {
-  @Output()
-  enviarJuego: EventEmitter<any> = new EventEmitter<any>();
+  @Output() enviarJuego: EventEmitter<any> = new EventEmitter<any>();
   nuevoJuego: JuegoAgilidad;
   operador = '../../../assets/imagenes/agilidad/operadores.png';
   ocultarVerificar: boolean;
@@ -18,15 +22,16 @@ export class AgilidadAritmeticaComponent implements OnInit {
   private subscription: Subscription;
 
   ngOnInit(): void {
+    this.db.getdb('juegos');
   }
-  constructor() {
+  constructor(public db: FiredbService, public side: SidenavComponent) {
     this.ocultarVerificar = true;
     this.Tiempo = 10;
     this.nuevoJuego = new JuegoAgilidad();
+    
   }
   NuevoJuego(): void {
     const oper = this.operadorAleatorio();
-    console.log(oper);
     this.ocultarVerificar = false;
     this.nuevoJuego.numero1 = this.numeroAleatorio();
     this.nuevoJuego.numero2 = this.numeroAleatorio();
@@ -60,6 +65,12 @@ export class AgilidadAritmeticaComponent implements OnInit {
   }
   verificar(): void {
     this.nuevoJuego.verificar();
+    const paraGuardar ={
+      jugador: this.side.usuario.email,
+      juego: this.nuevoJuego.nombre,
+      resultado: this.nuevoJuego.gano
+    }
+    this.db.setdb(paraGuardar);
     this.Tiempo = 10;
     this.ocultarVerificar = true;
     clearInterval(this.repetidor);

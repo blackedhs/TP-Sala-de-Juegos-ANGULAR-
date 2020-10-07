@@ -12,10 +12,12 @@ import { AuthService } from 'src/app/servicios/auth.service';
 })
 export class SidenavComponent implements OnInit {
   public user$: Observable<User> = this.authSvc.afAuth.user;
+  public usuario: User;
   private mediaMarcher: MediaQueryList = matchMedia('(max-width:720px)');
   constructor(private authSvc: AuthService, public router: Router) { }
 
   ngOnInit(): void {
+    this.user$.subscribe(user => this.usuario = user as User);
   }
   async onLogout(): Promise<any> {
     await this.authSvc.logout();

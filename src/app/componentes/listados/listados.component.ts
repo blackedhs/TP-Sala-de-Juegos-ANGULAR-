@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FiredbService } from 'src/app/servicios/firedb.service';
 
 @Component({
   selector: 'app-listados',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listados.component.css']
 })
 export class ListadosComponent implements OnInit {
-
-  constructor() { }
+  public lista = [];
+  constructor(public db: FiredbService) { }
 
   ngOnInit(): void {
+    this.db.getdb('users').snapshotChanges().subscribe(elements => {
+      this.lista = [];
+      elements.forEach(dato =>
+        this.lista.push(dato.payload.toJSON()))
+    });
   }
-
 }

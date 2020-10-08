@@ -1,1 +1,27 @@
-<p>tateti works!</p>
+<div class="container">
+    <div class="p-3 mb-2 bg-secondary text-white text-center">Ta-Te-Ti</div>
+    <div class="row">
+        <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-secondary button" (click)='clickButton(0)'>{{cuadrados[0]}}</button>
+            <button type="button" class="btn btn-outline-secondary button" (click)='clickButton(1)'>{{cuadrados[1]}}</button>
+            <button type="button" class="btn btn-outline-secondary button" (click)='clickButton(2)'>{{cuadrados[2]}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-secondary button" (click)='clickButton(3)'>{{cuadrados[3]}}</button>
+            <button type="button" class="btn btn-outline-secondary button" (click)='clickButton(4)'>{{cuadrados[4]}}</button>
+            <button type="button" class="btn btn-outline-secondary button" (click)='clickButton(5)'>{{cuadrados[5]}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-secondary  button" (click)='clickButton(6)'>{{cuadrados[6]}}</button>
+            <button type="button" class="btn btn-outline-secondary button" (click)='clickButton(7)'>{{cuadrados[7]}}</button>
+            <button type="button" class="btn btn-outline-secondary button" (click)='clickButton(8)'>{{cuadrados[8]}}</button>
+          </div>
+    </div>
+    <button class="btn btn-primary btn-block my-2" (click)="nuevoJuego()">Volver a intentar</button>
+    <div [hidden]='ganaste != 1' class="p-3 mb-2 bg-success text-white text-center">Ganaste!!!!</div>
+    <div [hidden]='ganaste != 2' class="p-3 mb-2 bg-danger text-white text-center">Perdiste!!!!</div>
+</div>

@@ -7,12 +7,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  @Output() disparador = new EventEmitter<void>();
+  public visualizar = true;
   constructor() { }
 
   ngOnInit(): void {
   }
   disparar(): void {
-    this.disparador.emit();
+    this.visualizar = !this.visualizar;
   }
 }

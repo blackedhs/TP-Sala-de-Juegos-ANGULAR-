@@ -16,16 +16,24 @@ import { AgilidadAritmeticaComponent } from '../componentes/agilidad-aritmetica/
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { TatetiComponent } from '../componentes/tateti/tateti.component';
 import { MemotestComponent } from '../componentes/memotest/memotest.component';
+import { ListadoDeResultadosComponent } from '../componentes/listado-de-resultados/listado-de-resultados.component';
+import { ListadoComponent } from '../componentes/listado/listado.component';
+import { ToolbarComponent } from '../componentes/toolbar/toolbar.component';
+import { ListadosComponent } from '../componentes/listados/listados.component';
+import { RepiteLaSecuenciaComponent } from '../componentes/repite-la-secuencia/repite-la-secuencia.component';
 
 const routes: Routes = [
   {
-    path: '', component: SidenavComponent,
+    path: '', component: ToolbarComponent,
     children: [
       { path: '', component: LoginComponent },
       { path: 'login', component: LoginComponent },
       { path: 'quiensoy', component: QuiensoyComponent },
       { path: 'registro', component: RegistroComponent },
       { path: 'principal', component: PrincipalComponent },
+      { path: 'listado-resultados', component: ListadoDeResultadosComponent },
+      { path: 'listado', component: ListadoComponent },
+      { path: 'listado-jugadores', component: ListadosComponent },
       {
         path: 'juegos', component: JuegosComponent,
         children: [
@@ -38,6 +46,7 @@ const routes: Routes = [
           { path: 'Memotest', component: MemotestComponent },
           { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
           { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
+          { path: 'secuencia', component: RepiteLaSecuenciaComponent },
           // { path: 'Agilidad', component: AgilidadAritmeticaComponent }
         ]
       }

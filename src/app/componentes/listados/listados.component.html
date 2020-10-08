@@ -1,1 +1,19 @@
-<p>listados works!</p>
+<div class="container">
+    <div class="p-3 mb-2 bg-secondary text-white text-center">LISTA DE JUGADORES</div>
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">APELLIDO</th>
+                <th scope="col">E-MAIL</th>
+            </tr>
+        </thead>
+        <TBody>
+            <tr *ngFor='let item of lista'>
+                <td scope='row'>{{item.nombre}}</td>
+                <td >{{item.apellido}}</td>
+                <td >{{item.email}}</td>
+            </tr>
+        </TBody>
+    </table>
+</div>

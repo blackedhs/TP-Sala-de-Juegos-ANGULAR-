@@ -10,7 +10,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatDividerModule} from '@angular/material/divider';
-
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -27,7 +28,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatGridListModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSortModule,
+    MatTableModule
   ],
   exports: [
     MatButtonModule,
@@ -39,7 +42,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatGridListModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSortModule,
+    MatTableModule
   ]
 })
 export class MaterialModule { }

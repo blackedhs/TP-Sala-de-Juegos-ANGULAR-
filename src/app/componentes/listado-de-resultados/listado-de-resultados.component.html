@@ -1,25 +1,18 @@
-<!--div *ngFor="let juego of listado">
-
-<p> {{juego.nombre}} </p>
-<p> {{juego.jugador}} </p>
-
-</div-->
-
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th>Juego</th>
-            <th>Jugador</th>
-            <th>Resultado</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let juego of listado">
-            <td>{{juego.nombre}} </td>
-            <td>{{juego.jugador}} </td>
-            <td *ngIf="juego.gano">Gano </td>
-            <td *ngIf="!juego.gano">Perdio</td>
-        </tr>
-
-    </tbody>
-</table>
+<div class="container">
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th scope="col">JUEGO</th>
+                <th scope="col">JUGADOR</th>
+                <th scope="col">RESULTADO</th>
+            </tr>
+        </thead>
+        <TBody>
+            <tr *ngFor='let item of listado'>
+                <td scope="row">{{item.juego}}</td>
+                <td>{{item.jugador}}</td>
+                <td>{{item.resultado}}</td>
+            </tr>
+        </TBody>
+    </table>
+</div>

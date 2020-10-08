@@ -47,6 +47,7 @@ import { ListadosComponent } from './componentes/listados/listados.component';
 import { PptComponent } from './componentes/ppt/ppt.component';
 import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { MemotestComponent } from './componentes/memotest/memotest.component';
+import { RepiteLaSecuenciaComponent } from './componentes/repite-la-secuencia/repite-la-secuencia.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { MemotestComponent } from './componentes/memotest/memotest.component';
     ListadosComponent,
     PptComponent,
     TatetiComponent,
-    MemotestComponent
+    MemotestComponent,
+    RepiteLaSecuenciaComponent
   ],
   imports: [
     BrowserModule,

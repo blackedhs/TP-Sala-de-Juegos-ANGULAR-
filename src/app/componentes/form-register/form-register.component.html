@@ -1,6 +1,14 @@
 <span><h1 class="text-center">REGISTRO</h1> </span>
 <form class="example-form" [formGroup]='registerForm' (ngSubmit)='onSubmit()'>
     <mat-form-field class="example-full-width">
+        <mat-label>Nombre </mat-label>
+        <input type='text' matInput placeholder="Nombre" class="noback" formControlName='nombre' />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Apellido </mat-label>
+        <input type='text' matInput placeholder="Apellido" class="noback" formControlName='apellido' />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
         <mat-label>Direccion de correo electronico</mat-label>
         <input type='email' matInput placeholder="Email" class="noback" formControlName='email' />
     </mat-form-field>

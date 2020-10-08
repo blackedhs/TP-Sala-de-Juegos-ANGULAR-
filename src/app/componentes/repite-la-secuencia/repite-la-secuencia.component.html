@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="p-3 mb-2 bg-secondary text-white text-center">REPITE LA SECUENCIA</div>
+    <div class="row">
+        <button class="btn btn-success btn-block" (click)='onComenzar()'>Comenzar</button>
+    </div>
+    <div class="row mx-auto mt-2 mb-1">
+        <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+            <button type="button" [class]='btn1Class' (click)='clickButton(1)'></button>
+            <button type="button" [class]='btn2Class'  (click)='clickButton(2)'></button>
+          </div>
+    </div>
+    <div class="row">
+
+        <div class="btn-group mx-auto my-1">
+            <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+                <button type="button" [class]='btn3Class'  (click)='clickButton(3)'></button>
+                <button type="button" [class]='btn4Class'  (click)='clickButton(4)'></button>
+            </div>
+        </div>
+    </div>
+    <div class="p-3 mb-2 bg-secondary text-white text-center">Tiempo : {{tiempo}}</div>
+    <div [hidden]='resultado != 1' class="p-3 mb-2 bg-success text-white text-center">Ganaste</div>
+    <div [hidden]='resultado != 2' class="p-3 mb-2 bg-danger text-white text-center">Perdiste</div>
+</div>

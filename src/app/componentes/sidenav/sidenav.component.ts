@@ -1,9 +1,10 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { Component, EventEmitter, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/servicios/auth.service';
+import { ToolbarComponent } from 'src/app/componentes/toolbar/toolbar.component';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -11,6 +12,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
+  @Input() public visualizar;
   public user$: Observable<User> = this.authSvc.afAuth.user;
   public usuario: User;
   private mediaMarcher: MediaQueryList = matchMedia('(max-width:720px)');

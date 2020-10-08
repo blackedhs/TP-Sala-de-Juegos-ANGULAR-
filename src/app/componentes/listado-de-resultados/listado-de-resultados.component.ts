@@ -1,5 +1,6 @@
 
 import { Component, OnInit , Input, EventEmitter} from '@angular/core';
+import { FiredbService } from 'src/app/servicios/firedb.service';
 
 @Component({
   selector: 'app-listado-de-resultados',
@@ -7,19 +8,9 @@ import { Component, OnInit , Input, EventEmitter} from '@angular/core';
   styleUrls: ['./listado-de-resultados.component.css']
 })
 export class ListadoDeResultadosComponent implements OnInit {
- @Input()
- listado: Array<any>;
+  @Input() listado = [];
+  constructor(public db: FiredbService) { }
 
-
-  constructor() {
-   }
-
-  ngOnInit() {
-
+  ngOnInit(): void {
   }
-
-  ver() {
-    console.info(this.listado);
-  }
-
 }

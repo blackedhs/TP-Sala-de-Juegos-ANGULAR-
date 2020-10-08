@@ -1,5 +1,5 @@
 <mat-sidenav-container class="app-sidenav-container">
-    <mat-sidenav class="app-sidenav" #sidenav [opened]="!pantallaSmall()" [mode]="pantallaSmall() ? 'over' : 'side'">
+    <mat-sidenav class="app-sidenav" #sidenav [opened]="visualizar" mode='side'>
         <mat-toolbar color="primary"> MENU </mat-toolbar>
 
         <mat-nav-list *ngIf="user$ | async as user; else loged">
@@ -8,6 +8,12 @@
                     <h2>Home</h2>
                 </a>
                 <mat-icon>home</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <a matLine href="juegos">
+                    <h2>Juegos</h2>
+                </a>
+                <mat-icon>videogame_asset</mat-icon>
             </mat-list-item>
             <mat-list-item style="height: 150px">
                 <img class="img rounded-circle" src="./../../../assets/imagenes/login-5.jpg" />
@@ -52,7 +58,6 @@
         </mat-nav-list>
     </mat-sidenav>
     <div class="app-sidenav-content">
-        <app-toolbar (disparador)="sidenav.toggle()"></app-toolbar>
         <router-outlet>
         </router-outlet>
     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FiredbService } from 'src/app/servicios/firedb.service';
 import { JuegoServiceService } from '../../servicios/juego-service.service';
 
 @Component({
@@ -7,27 +8,31 @@ import { JuegoServiceService } from '../../servicios/juego-service.service';
   styleUrls: ['./listado.component.css']
 })
 export class ListadoComponent implements OnInit {
-  public listadoParaCompartir: Array<any>;
-  miServicioJuego: JuegoServiceService;
-
-  constructor(servicioJuego: JuegoServiceService) {
-    this.miServicioJuego = servicioJuego;
-
+  public listadoO = [];
+  public listado = [];
+  public select = 'Todos';
+  constructor(public db: FiredbService) {
   }
 
   ngOnInit(): void {
-
-  }
-
-  llamaService(): void {
-    console.log('llamaService');
-    this.listadoParaCompartir = this.miServicioJuego.listar();
-  }
-
-  llamaServicePromesa(): void {
-    console.log('llamaServicePromesa');
-    this.miServicioJuego.listarP().then((listado) => {
-      this.listadoParaCompartir = listado;
+    this.db.getdb('juegos').snapshotChanges().subscribe(elements => {
+      elements.forEach(dato => {
+        this.listadoO.push(dato.payload.toJSON());
+      });
+      this.listadoO.forEach(element => {
+        if (element.resultado)
+          element.resultado = 'Gano'
+        else
+          element.resultado = 'Perdio'
+      });
     });
+    this.listado = this.listadoO;
+  }
+  onFilter() {
+    if (this.select == '' || this.select == 'Todos')
+      this.listado = this.listadoO;
+    else
+      this.listado = this.listadoO.filter(element =>
+        element.juego == this.select);
   }
 }

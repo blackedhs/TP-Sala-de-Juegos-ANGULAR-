@@ -1,1 +1,32 @@
-<p>memotest works!</p>
+<div class="container">
+    <div class="p-3 mb-2 bg-secondary text-white text-center">MEMOTEST </div>
+    <div class="row">
+        <div class="col-6 text-center">
+            <h2>Cantidad de movimientos maximo : 30</h2>
+        </div>
+        <div class="col-6 text-center">
+            <h2>Cantidad de movimientos: {{jugadas}}</h2>
+        </div>
+    </div>    
+    <table >
+        <tr *ngFor="let fila of grilla">
+            <td *ngFor="let celda of fila" (click)="elegirCelda(celda)">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo1.jpg" *ngIf="celda.iconSrc == 'memo1' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo2.jpg" *ngIf="celda.iconSrc == 'memo2' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo3.jpg" *ngIf="celda.iconSrc == 'memo3' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo4.jpg" *ngIf="celda.iconSrc == 'memo4' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo5.jpg" *ngIf="celda.iconSrc == 'memo5' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo6.jpg" *ngIf="celda.iconSrc == 'memo6' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo7.jpg" *ngIf="celda.iconSrc == 'memo7' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo8.jpg" *ngIf="celda.iconSrc == 'memo8' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo9.jpg" *ngIf="celda.iconSrc == 'memo9' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/memo10.jpg" *ngIf="celda.iconSrc == 'memo10' && celda.seleccionada">
+                <img class="rounded-circle" src="../../../assets/imagenes/memotest/favicon.jpg"  *ngIf="!celda.seleccionada">
+                
+            </td>
+        </tr>
+    </table>
+    <button (click)="newGame()" class="btn btn-info btn-block mt-3">Volver a intentarlo</button>
+    <div [hidden]='resultado != 1' class="p-3 mb-2 bg-success text-white text-center mt-2">Ganaste</div>
+    <div [hidden]='resultado != 2' class="p-3 mb-2 bg-danger text-white text-center mt-2">Perdiste</div>
+</div>

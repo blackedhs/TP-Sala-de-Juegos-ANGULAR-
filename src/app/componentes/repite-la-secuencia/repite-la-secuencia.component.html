@@ -5,16 +5,16 @@
     </div>
     <div class="row mx-auto mt-2 mb-1">
         <div class="btn-group mx-auto" role="group" aria-label="Basic example">
-            <button type="button" [class]='btn1Class' (click)='clickButton(1)'></button>
-            <button type="button" [class]='btn2Class'  (click)='clickButton(2)'></button>
+            <button [disabled]='!miTurno' type="button" [class]='btn1Class' (click)='clickButton(1)'></button>
+            <button [disabled]='!miTurno' type="button" [class]='btn2Class'  (click)='clickButton(2)'></button>
           </div>
     </div>
     <div class="row">
 
         <div class="btn-group mx-auto my-1">
             <div class="btn-group mx-auto" role="group" aria-label="Basic example">
-                <button type="button" [class]='btn3Class'  (click)='clickButton(3)'></button>
-                <button type="button" [class]='btn4Class'  (click)='clickButton(4)'></button>
+                <button [disabled]='!miTurno'  type="button" [class]='btn3Class'  (click)='clickButton(3)'></button>
+                <button [disabled]='!miTurno' type="button" [class]='btn4Class'  (click)='clickButton(4)'></button>
             </div>
         </div>
     </div>

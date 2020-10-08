@@ -17,6 +17,7 @@ export class RepiteLaSecuenciaComponent implements OnInit {
     [1, 1, 1, 2, 2, 3, 4]
   ]
   public random = this.numRandom();
+  public miTurno = false;
   public resultado = 0;
   public veces = 1;
   public tiempo = 5;
@@ -49,6 +50,7 @@ export class RepiteLaSecuenciaComponent implements OnInit {
         this.contadorCpu++;
       } else {
         this.contadorCpu = 0;
+        this.miTurno = true;
         clearInterval(this.intervalo);
         this.intervaloTiempo = setInterval(() => {
           this.tiempo--
@@ -60,34 +62,38 @@ export class RepiteLaSecuenciaComponent implements OnInit {
 
   }
   clickButton(btn: number) {
-    this.prenderBtn(btn);
-    if (this.combinaciones[this.random][this.contadorUser] == btn) {
-      this.contadorUser++;
-      this.tiempo = 5;
-      if (this.contadorUser == 7) {
-        this.termino(true);
-      } else 
-      if (this.veces == this.contadorUser) {
-        this.veces++;
-        console.log('ak');
-        this.onComenzar();
-        clearInterval(this.intervaloTiempo);
-        this.contadorUser = 0;
+    if (this.miTurno) {
+      this.prenderBtn(btn);
+      if (this.combinaciones[this.random][this.contadorUser] == btn) {
+        this.contadorUser++;
+        this.tiempo = 5;
+        if (this.contadorUser == 6) {
+          this.termino(true);
+        } else
+          if (this.veces == this.contadorUser) {
+            this.veces++;
+            console.log('ak');
+            this.miTurno = false;
+            this.onComenzar();
+            clearInterval(this.intervaloTiempo);
+            this.contadorUser = 0;
+          }
+      } else {
+        this.termino(false);
       }
-    } else {
-      this.termino(false);
     }
   }
   termino(resultado: boolean) {
     clearInterval(this.intervaloTiempo);
+    this.miTurno = false;
     this.tiempo = 5;
     this.contadorCpu = 0;
     this.contadorUser = 0;
     console.log(resultado);
     this.random = this.numRandom();
-    if (resultado){
+    if (resultado) {
       this.resultado = 1;
-    }else{
+    } else {
       this.resultado = 2;
     }
     this.db.setdb({
@@ -95,7 +101,7 @@ export class RepiteLaSecuenciaComponent implements OnInit {
       jugador: this.side.usuario.email,
       resultado: resultado
     });
-    setTimeout(()=> this.resultado = 0,2500);
+    setTimeout(() => this.resultado = 0, 2500);
   }
 
   prenderBtn(btn: number) {
@@ -127,6 +133,7 @@ export class RepiteLaSecuenciaComponent implements OnInit {
   onBtn3() {
     this.btn3.play();
     this.btn3Class = "btn btn-success button mx-2 ";
+    setTimeout(() => this.btn3Class = 'btn btn-outline-success button mx-2', 1000);
   }
   onBtn4() {
     this.btn4.play();
